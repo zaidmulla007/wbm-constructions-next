@@ -55,7 +55,7 @@ const Footer = () => {
             className="lg:col-span-1"
           >
             <Image
-              src="/logo.png"
+              src="/logo.jpg"
               alt="WBM Contracting"
               width={150}
               height={75}
