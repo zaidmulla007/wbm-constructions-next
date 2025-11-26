@@ -191,7 +191,7 @@ const Footer = () => {
       </div>
 
       {/* Scroll to Top Button */}
-      <motion.button
+      {/* <motion.button
         onClick={scrollToTop}
         initial={{ opacity: 0, scale: 0 }}
         whileInView={{ opacity: 1, scale: 1 }}
@@ -202,7 +202,7 @@ const Footer = () => {
         aria-label="Scroll to top"
       >
         <ArrowUp className="w-6 h-6" />
-      </motion.button>
+      </motion.button> */}
     </footer>
   );
 };

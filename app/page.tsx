@@ -6,6 +6,7 @@ import Projects from './components/Projects';
 import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import FloatingActions from './components/FloatingActions';
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         <Contact />
       </div>
       <Footer />
+      <FloatingActions />
     </main>
   );
 }
