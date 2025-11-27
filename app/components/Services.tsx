@@ -8,45 +8,59 @@ const Services = () => {
   const services = [
     {
       icon: <Building2 className="w-12 h-12" />,
-      title: 'Commercial Construction',
-      description: 'High-quality commercial buildings designed for functionality and aesthetic appeal',
-      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80',
-      features: ['Office Buildings', 'Retail Spaces', 'Hotels & Resorts'],
+      title: 'Design & Build',
+      description: 'Our Design & Build service combines creativity and construction expertise into a single streamlined process',
+      image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80',
+      features: ['Initial Concept', 'Space Planning', 'Design Development', 'Execution & Handover'],
+    },
+    {
+      icon: <Building2 className="w-12 h-12" />,
+      title: 'Office Fit out',
+      description: 'We create functional, modern, and inspiring workspaces that enhance productivity and employee well-being',
+      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80',
+      features: ['Partitions & Ceilings', 'Flooring & MEP Works', 'Furniture Installation', 'Complete Interior Finishing'],
     },
     {
       icon: <Home className="w-12 h-12" />,
-      title: 'Residential Projects',
-      description: 'Luxury homes and residential complexes built with precision and care',
-      image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80',
-      features: ['Villas & Mansions', 'Apartments', 'Housing Communities'],
-    },
-    {
-      icon: <Factory className="w-12 h-12" />,
-      title: 'Industrial Facilities',
-      description: 'Robust industrial structures engineered for maximum efficiency',
-      image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80',
-      features: ['Warehouses', 'Manufacturing Plants', 'Storage Facilities'],
+      title: 'Retail Fit out',
+      description: 'We design and build retail environments that attract customers and elevate the shopping experience',
+      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=80',
+      features: ['Display Units', 'Counters & Checkout', 'Lighting Design', 'Branding Elements'],
     },
     {
       icon: <Hammer className="w-12 h-12" />,
-      title: 'Renovation & Remodeling',
-      description: 'Transform existing spaces with expert renovation and remodeling services',
-      image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80',
-      features: ['Interior Renovation', 'Exterior Upgrades', 'Complete Makeovers'],
+      title: 'Refurbishment',
+      description: 'Our refurbishment services upgrade and refresh existing spaces without disrupting daily operations',
+      image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80',
+      features: ['Layout Enhancement', 'Functionality Upgrade', 'Aesthetic Renewal', 'Performance Optimization'],
+    },
+    {
+      icon: <Factory className="w-12 h-12" />,
+      title: 'Furniture Solutions',
+      description: 'We supply and install high-quality office and retail furniture that blends comfort, style, and durability',
+      image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80',
+      features: ['Modular Systems', 'Custom-Made Pieces', 'Ergonomic Design', 'Space Optimization'],
+    },
+    {
+      icon: <Wrench className="w-12 h-12" />,
+      title: 'Joinery Works',
+      description: 'Our in-house joinery team creates custom woodwork, cabinetry, counters, wall claddings, doors, and bespoke furniture',
+      image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&q=80',
+      features: ['Custom Cabinetry', 'Wall Claddings', 'Bespoke Furniture', 'High-Grade Materials'],
     },
     {
       icon: <PaintBucket className="w-12 h-12" />,
       title: 'Interior Design',
-      description: 'Custom interior solutions that reflect your style and vision',
+      description: 'Our interior design service transforms ideas into visually appealing, functional environments',
       image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80',
-      features: ['Space Planning', 'Custom Furnishing', 'Décor Services'],
+      features: ['Mood Boards & Layouts', 'Material Selection', 'Color Palettes', '3D Visuals'],
     },
     {
-      icon: <Wrench className="w-12 h-12" />,
-      title: 'Maintenance Services',
-      description: 'Comprehensive maintenance to keep your property in perfect condition',
-      image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&q=80',
-      features: ['Regular Inspections', 'Repairs & Fixes', 'Preventive Maintenance'],
+      icon: <Hammer className="w-12 h-12" />,
+      title: 'Renovation',
+      description: 'Whether it\'s restructuring a layout or updating finishes, our renovation services revitalize spaces with minimal downtime',
+      image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80',
+      features: ['Civil Works', 'Electrical Upgrades', 'Partition Changes', 'Flooring & Painting'],
     },
   ];
 
@@ -65,10 +79,10 @@ const Services = () => {
             OUR SERVICES
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Comprehensive Construction Solutions
+            Complete Interior Solutions
           </h2>
           <p className="text-xl text-white max-w-3xl mx-auto">
-            From concept to completion, we offer a full range of construction services tailored to your needs
+            From concept to completion, we deliver complete interior solutions tailored to meet the needs of commercial, retail, and office spaces
           </p>
         </motion.div>
 

@@ -10,38 +10,38 @@ const Hero = () => {
 
   const slides = [
     {
-      image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&q=80',
-      title: 'Building Excellence',
-      subtitle: 'Transforming Visions into Reality',
-      description: 'Premium construction services with unmatched quality and precision',
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80',
+      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80',
       title: 'Luxury Developments',
-      subtitle: 'Crafting Architectural Masterpieces',
-      description: 'Where innovation meets timeless design and superior craftsmanship',
+      subtitle: 'That Enhance Life & Work',
+      description: 'Complete interior solutions for commercial, retail, and office spaces',
     },
     {
-      image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1920&q=80',
-      title: 'Trusted Partners',
-      subtitle: 'Your Dream, Our Commitment',
-      description: 'Delivering exceptional results with integrity and professionalism',
+      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920&q=80',
+      title: 'Innovation & Quality',
+      subtitle: 'In Every Project We Deliver',
+      description: 'Modern design trends with smart construction practices',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&q=80',
+      title: 'Your Trusted Partner',
+      subtitle: 'For Superior Workmanship',
+      description: 'Known for innovation, reliability, and exceptional results',
     },
   ];
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      setCurrentSlide((prev) => (prev + 1) % 3);
     }, 5000);
     return () => clearInterval(timer);
-  }, [slides.length]);
+  }, []);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    setCurrentSlide((prev) => (prev + 1) % 3);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    setCurrentSlide((prev) => (prev - 1 + 3) % 3);
   };
 
   return (
@@ -139,6 +139,23 @@ const Hero = () => {
           </AnimatePresence>
         </div>
       </div>
+
+      {/* Navigation Arrows */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 bg-gold/20 hover:bg-gold backdrop-blur-sm border border-gold rounded-full flex items-center justify-center text-white hover:text-dark transition-all duration-300 group"
+        aria-label="Previous slide"
+      >
+        <ChevronLeft className="w-6 h-6 md:w-7 md:h-7 group-hover:scale-110 transition-transform" />
+      </button>
+
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 md:right-8 lg:right-12 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 bg-gold/20 hover:bg-gold backdrop-blur-sm border border-gold rounded-full flex items-center justify-center text-white hover:text-dark transition-all duration-300 group"
+        aria-label="Next slide"
+      >
+        <ChevronRight className="w-6 h-6 md:w-7 md:h-7 group-hover:scale-110 transition-transform" />
+      </button>
 
       {/* Slide Indicators */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">

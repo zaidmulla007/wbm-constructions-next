@@ -8,19 +8,19 @@ const Blog = () => {
   const blogPosts = [
     {
       id: 1,
-      title: '10 Essential Tips for Successful Construction Projects',
-      excerpt: 'Learn the key strategies that ensure your construction project stays on time and within budget...',
-      image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80',
-      author: 'Muhammad Din',
+      title: 'Office Interior Trends: Creating Future-Ready Workspaces',
+      excerpt: 'We follow the latest shifts in office interior styling—from minimalistic workspaces and biophilic design to sustainable materials and smart technology...',
+      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80',
+      author: 'WBM Team',
       date: 'Nov 15, 2025',
-      category: 'Project Management',
-      readTime: '5 min read',
+      category: 'Trends',
+      readTime: '6 min read',
     },
     {
       id: 2,
-      title: 'Sustainable Building Practices for Modern Construction',
-      excerpt: 'Discover how eco-friendly materials and practices are shaping the future of construction...',
-      image: 'https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?w=800&q=80',
+      title: 'Building Greener, Healthier Spaces',
+      excerpt: 'Our sustainable approach includes eco-friendly materials, energy-efficient solutions, responsible sourcing, and waste management practices...',
+      image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80',
       author: 'WBM Team',
       date: 'Nov 10, 2025',
       category: 'Sustainability',
@@ -28,43 +28,43 @@ const Blog = () => {
     },
     {
       id: 3,
-      title: 'The Future of Smart Buildings in the UAE',
-      excerpt: 'Explore the latest innovations in smart building technology and automation systems...',
-      image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80',
+      title: 'Innovation in Modern Construction Methods',
+      excerpt: 'Innovation is at the heart of what we do. We explore new materials, advanced construction methods, and modern design concepts...',
+      image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80',
       author: 'WBM Team',
       date: 'Nov 5, 2025',
-      category: 'Technology',
-      readTime: '6 min read',
-    },
-    {
-      id: 4,
-      title: 'Maximizing ROI in Commercial Real Estate',
-      excerpt: 'Strategic insights on how to maximize returns on your commercial property investments...',
-      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
-      author: 'Muhammad Din',
-      date: 'Oct 28, 2025',
-      category: 'Business',
+      category: 'Innovation',
       readTime: '8 min read',
     },
     {
-      id: 5,
-      title: 'Safety First: Best Practices in Construction Sites',
-      excerpt: 'Essential safety protocols and measures that protect workers and ensure project success...',
-      image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80',
+      id: 4,
+      title: 'Retail Fit Out: Creating Engaging Shopping Experiences',
+      excerpt: 'Expert guidance on designing retail spaces that attract customers and enhance the shopping experience with modern layouts and branding...',
+      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80',
       author: 'WBM Team',
-      date: 'Oct 20, 2025',
-      category: 'Safety',
+      date: 'Oct 28, 2025',
+      category: 'Blogs',
       readTime: '5 min read',
     },
     {
-      id: 6,
-      title: 'Luxury Home Design Trends for 2025',
-      excerpt: 'The latest architectural trends and design elements defining luxury residential properties...',
-      image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
-      author: 'Muhammad Din',
-      date: 'Oct 15, 2025',
-      category: 'Design',
+      id: 5,
+      title: 'Space Planning Advice for Commercial Interiors',
+      excerpt: 'Practical tips for anyone planning a fit out, renovation, or interior project. From layout optimization to material selection...',
+      image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80',
+      author: 'WBM Team',
+      date: 'Oct 20, 2025',
+      category: 'Blogs',
       readTime: '6 min read',
+    },
+    {
+      id: 6,
+      title: 'The Art of Custom Joinery: Adding Character to Interiors',
+      excerpt: 'How craftsmanship, precision, and high-grade materials in joinery pieces add character, depth, and functionality to any interior...',
+      image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80',
+      author: 'WBM Team',
+      date: 'Oct 15, 2025',
+      category: 'Blogs',
+      readTime: '5 min read',
     },
   ];
 
@@ -80,13 +80,13 @@ const Blog = () => {
           className="text-center mb-16 md:mb-20 lg:mb-24"
         >
           <span className="inline-block px-4 py-2 bg-gold/10 border border-gold rounded-full text-gold font-semibold text-sm tracking-wider mb-4">
-            INSIGHTS & NEWS
+            OUR INSIGHTS
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Latest from Our Blog
+            Shaping Better Built Environments
           </h2>
           <p className="text-xl text-white max-w-3xl mx-auto">
-            Stay updated with industry insights, project updates, and expert advice from WBM Contracting
+            Our insights reflect our knowledge, expertise, and commitment to staying ahead of industry trends through continuous learning, innovation, and improvement
           </p>
         </motion.div>
 
