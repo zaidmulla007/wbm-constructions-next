@@ -76,7 +76,7 @@ const Hero = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 100 }}
               transition={{ duration: 0.5 }}
-              className="max-w-3xl ml-8 md:ml-16 lg:ml-24 xl:ml-32"
+              className="max-w-3xl ml-0 sm:ml-8 md:ml-16 lg:ml-24 xl:ml-32"
             >
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -140,21 +140,21 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Navigation Arrows */}
+      {/* Navigation Arrows - Hidden on mobile */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 bg-gold/20 hover:bg-gold backdrop-blur-sm border border-gold rounded-full flex items-center justify-center text-white hover:text-dark transition-all duration-300 group"
+        className="hidden md:flex absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-14 h-14 bg-gold/20 hover:bg-gold backdrop-blur-sm border border-gold rounded-full items-center justify-center text-white hover:text-dark transition-all duration-300 group"
         aria-label="Previous slide"
       >
-        <ChevronLeft className="w-6 h-6 md:w-7 md:h-7 group-hover:scale-110 transition-transform" />
+        <ChevronLeft className="w-7 h-7 group-hover:scale-110 transition-transform" />
       </button>
 
       <button
         onClick={nextSlide}
-        className="absolute right-4 md:right-8 lg:right-12 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 bg-gold/20 hover:bg-gold backdrop-blur-sm border border-gold rounded-full flex items-center justify-center text-white hover:text-dark transition-all duration-300 group"
+        className="hidden md:flex absolute right-4 md:right-8 lg:right-12 top-1/2 -translate-y-1/2 z-20 w-14 h-14 bg-gold/20 hover:bg-gold backdrop-blur-sm border border-gold rounded-full items-center justify-center text-white hover:text-dark transition-all duration-300 group"
         aria-label="Next slide"
       >
-        <ChevronRight className="w-6 h-6 md:w-7 md:h-7 group-hover:scale-110 transition-transform" />
+        <ChevronRight className="w-7 h-7 group-hover:scale-110 transition-transform" />
       </button>
 
       {/* Slide Indicators */}
