@@ -8,6 +8,7 @@ import { Building2, Home, Factory, Hammer, PaintBucket, Wrench } from 'lucide-re
 const Services = () => {
   const services = [
     {
+      id: 1,
       icon: <Building2 className="w-12 h-12" />,
       title: 'Design & Build',
       description: 'Our Design & Build service combines creativity and construction expertise into a single streamlined process',
@@ -15,6 +16,7 @@ const Services = () => {
       features: ['Initial Concept', 'Space Planning', 'Design Development', 'Execution & Handover'],
     },
     {
+      id: 2,
       icon: <Building2 className="w-12 h-12" />,
       title: 'Office Fit out',
       description: 'We create functional, modern, and inspiring workspaces that enhance productivity and employee well-being',
@@ -22,6 +24,7 @@ const Services = () => {
       features: ['Partitions & Ceilings', 'Flooring & MEP Works', 'Furniture Installation', 'Complete Interior Finishing'],
     },
     {
+      id: 3,
       icon: <Home className="w-12 h-12" />,
       title: 'Retail Fit out',
       description: 'We design and build retail environments that attract customers and elevate the shopping experience',
@@ -29,6 +32,7 @@ const Services = () => {
       features: ['Display Units', 'Counters & Checkout', 'Lighting Design', 'Branding Elements'],
     },
     {
+      id: 4,
       icon: <Hammer className="w-12 h-12" />,
       title: 'Refurbishment',
       description: 'Our refurbishment services upgrade and refresh existing spaces without disrupting daily operations',
@@ -36,6 +40,7 @@ const Services = () => {
       features: ['Layout Enhancement', 'Functionality Upgrade', 'Aesthetic Renewal', 'Performance Optimization'],
     },
     {
+      id: 5,
       icon: <Factory className="w-12 h-12" />,
       title: 'Furniture Solutions',
       description: 'We supply and install high-quality office and retail furniture that blends comfort, style, and durability',
@@ -43,6 +48,7 @@ const Services = () => {
       features: ['Modular Systems', 'Custom-Made Pieces', 'Ergonomic Design', 'Space Optimization'],
     },
     {
+      id: 6,
       icon: <Wrench className="w-12 h-12" />,
       title: 'Joinery Works',
       description: 'Our in-house joinery team creates custom woodwork, cabinetry, counters, wall claddings, doors, and bespoke furniture',
@@ -50,6 +56,7 @@ const Services = () => {
       features: ['Custom Cabinetry', 'Wall Claddings', 'Bespoke Furniture', 'High-Grade Materials'],
     },
     {
+      id: 7,
       icon: <PaintBucket className="w-12 h-12" />,
       title: 'Interior Design',
       description: 'Our interior design service transforms ideas into visually appealing, functional environments',
@@ -57,6 +64,7 @@ const Services = () => {
       features: ['Mood Boards & Layouts', 'Material Selection', 'Color Palettes', '3D Visuals'],
     },
     {
+      id: 8,
       icon: <Hammer className="w-12 h-12" />,
       title: 'Renovation',
       description: 'Whether it\'s restructuring a layout or updating finishes, our renovation services revitalize spaces with minimal downtime',
@@ -99,51 +107,50 @@ const Services = () => {
               whileHover={{ y: -10 }}
               className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-gold/20 transition-all duration-300"
             >
-              {/* Image */}
-              <div className="relative h-48 overflow-hidden">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent" />
+              <Link href={`/services/${service.id}`} className="block h-full">
+                {/* Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent" />
 
-                {/* Icon */}
-                <div className="absolute bottom-4 left-4 w-16 h-16 bg-gold rounded-full flex items-center justify-center text-dark shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  {service.icon}
+                  {/* Icon */}
+                  <div className="absolute bottom-4 left-4 w-16 h-16 bg-gold rounded-full flex items-center justify-center text-dark shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    {service.icon}
+                  </div>
                 </div>
-              </div>
 
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-dark mb-3 group-hover:text-gold transition-colors duration-300">
-                  {service.title}
-                </h3>
-                <p className="text-black mb-4 leading-relaxed">
-                  {service.description}
-                </p>
+                {/* Content */}
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-dark mb-3 group-hover:text-gold transition-colors duration-300">
+                    {service.title}
+                  </h3>
+                  <p className="text-black mb-4 leading-relaxed">
+                    {service.description}
+                  </p>
 
-                {/* Features */}
-                <ul className="space-y-2 mb-6">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-black">
-                      <span className="w-2 h-2 bg-gold rounded-full mr-3"></span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                  {/* Features */}
+                  <ul className="space-y-2 mb-6">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-black">
+                        <span className="w-2 h-2 bg-gold rounded-full mr-3"></span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
 
-                {/* Button */}
-                <Link href="/services" className="block">
-                  <button className="w-full py-3 bg-dark text-white font-semibold rounded-lg group-hover:bg-gold group-hover:text-dark transition-all duration-300 transform group-hover:scale-105">
-                    Explore More
-                  </button>
-                </Link>
-              </div>
-
-              {/* Decorative Element */}
-              <div className="absolute top-0 right-0 w-20 h-20 bg-gold/10 rounded-bl-full transform translate-x-10 -translate-y-10 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500"></div>
+                  {/* Button */}
+                  <div className="block">
+                    <span className="inline-block w-full text-center py-3 bg-dark text-white font-semibold rounded-lg group-hover:bg-gold group-hover:text-dark transition-all duration-300 transform group-hover:scale-105">
+                      Explore More
+                    </span>
+                  </div>
+                </div>
+              </Link>
             </motion.div>
           ))}
         </div>

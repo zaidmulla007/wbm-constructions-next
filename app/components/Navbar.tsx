@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Instagram, Phone } from 'lucide-react';
+import { Menu, X, Instagram, Facebook } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
@@ -32,13 +32,19 @@ const Navbar = () => {
   // Check if we're on home page - only home page should have transparent navbar initially
   const isHomePage = pathname === '/';
 
+  const isActive = (path: string) => {
+    if (path === '/') {
+      return pathname === '/';
+    }
+    return pathname.startsWith(path);
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || !isHomePage
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || !isHomePage
           ? 'bg-dark/95 backdrop-blur-md shadow-lg shadow-gold/10'
           : 'bg-transparent'
         }`}
@@ -70,58 +76,65 @@ const Navbar = () => {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className={`text-white hover:text-gold transition-colors duration-300 font-medium text-lg relative group whitespace-nowrap px-2 cursor-pointer ${
-                    pathname === link.href ? 'text-gold' : ''
-                  }`}
+                  className={`text-white hover:text-gold transition-colors duration-300 font-medium text-lg relative group whitespace-nowrap px-2 cursor-pointer ${isActive(link.href) ? 'text-gold' : ''
+                    }`}
                 >
                   {link.name}
-                  <span className={`absolute bottom-0 left-0 h-0.5 bg-gold transition-all duration-300 ${
-                    pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`}></span>
+                  <span className={`absolute bottom-0 left-0 h-0.5 bg-gold transition-all duration-300 ${isActive(link.href) ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}></span>
                 </motion.div>
               </Link>
             ))}
 
             {/* Social Media Icons */}
             <div className="flex items-center gap-4 ml-4 pl-4 border-l border-gold/30">
-              {/* WhatsApp */}
+              {/* Instagram */}
               <motion.a
-                href="https://wa.me/918123091644?text=Hello!%20I%20want%20to%20know%20more%20about%20your%20services.%20Please%20call%20me%20back.%20Thanks"
+                href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 className="text-white hover:text-gold transition-colors duration-300"
-                title="Contact us on WhatsApp"
-                aria-label="WhatsApp"
-              >
-                <svg className="w-6 h-6" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 28">
-                  <path d="M15.391 15.219c0.266 0 2.812 1.328 2.922 1.516 0.031 0.078 0.031 0.172 0.031 0.234 0 0.391-0.125 0.828-0.266 1.188-0.359 0.875-1.813 1.437-2.703 1.437-0.75 0-2.297-0.656-2.969-0.969-2.234-1.016-3.625-2.75-4.969-4.734-0.594-0.875-1.125-1.953-1.109-3.031v-0.125c0.031-1.031 0.406-1.766 1.156-2.469 0.234-0.219 0.484-0.344 0.812-0.344 0.187 0 0.375 0.047 0.578 0.047 0.422 0 0.5 0.125 0.656 0.531 0.109 0.266 0.906 2.391 0.906 2.547 0 0.594-1.078 1.266-1.078 1.625 0 0.078 0.031 0.156 0.078 0.234 0.344 0.734 1 1.578 1.594 2.141 0.719 0.688 1.484 1.141 2.359 1.578 0.109 0.063 0.219 0.109 0.344 0.109 0.469 0 1.25-1.516 1.656-1.516zM12.219 23.5c5.406 0 9.812-4.406 9.812-9.812s-4.406-9.812-9.812-9.812-9.812 4.406-9.812 9.812c0 2.063 0.656 4.078 1.875 5.75l-1.234 3.641 3.781-1.203c1.594 1.047 3.484 1.625 5.391 1.625zM12.219 1.906c6.5 0 11.781 5.281 11.781 11.781s-5.281 11.781-11.781 11.781c-1.984 0-3.953-0.5-5.703-1.469l-6.516 2.094 2.125-6.328c-1.109-1.828-1.687-3.938-1.687-6.078 0-6.5 5.281-11.781 11.781-11.781z"></path>
-                </svg>
-              </motion.a>
-
-              {/* Instagram */}
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="text-white hover:text-gold transition-colors duration-300 cursor-not-allowed"
-                title="Instagram (Coming Soon)"
-                disabled
+                title="Follow us on Instagram"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
 
-              {/* Phone */}
+              {/* Facebook */}
               <motion.a
-                href="tel:+918123091644"
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 className="text-white hover:text-gold transition-colors duration-300"
-                title="Call us"
-                aria-label="Phone"
+                title="Follow us on Facebook"
+                aria-label="Facebook"
               >
-                <Phone className="w-5 h-5" />
+                <Facebook className="w-5 h-5" />
+              </motion.a>
+
+              {/* TikTok */}
+              <motion.a
+                href="https://tiktok.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="text-white hover:text-gold transition-colors duration-300"
+                title="Follow us on TikTok"
+                aria-label="TikTok"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                </svg>
               </motion.a>
             </div>
           </div>
@@ -154,9 +167,8 @@ const Navbar = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className={`block text-white hover:text-gold hover:bg-gold/10 transition-all duration-300 py-3 px-4 rounded-lg font-medium text-lg ${
-                      pathname === link.href ? 'text-gold bg-gold/10' : ''
-                    }`}
+                    className={`block text-white hover:text-gold hover:bg-gold/10 transition-all duration-300 py-3 px-4 rounded-lg font-medium text-lg ${isActive(link.href) ? 'text-gold bg-gold/10' : ''
+                      }`}
                   >
                     {link.name}
                   </motion.div>
@@ -170,38 +182,47 @@ const Navbar = () => {
                 transition={{ delay: navLinks.length * 0.1 }}
                 className="flex items-center gap-6 pt-4 px-4 border-t border-gold/30 mt-4"
               >
-                {/* WhatsApp */}
+                {/* Instagram */}
                 <a
-                  href="https://wa.me/918123091644?text=Hello!%20I%20want%20to%20know%20more%20about%20your%20services.%20Please%20call%20me%20back.%20Thanks"
+                  href="https://instagram.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-white hover:text-gold transition-colors duration-300"
-                  aria-label="WhatsApp"
-                >
-                  <svg className="w-5 h-5" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 28">
-                    <path d="M15.391 15.219c0.266 0 2.812 1.328 2.922 1.516 0.031 0.078 0.031 0.172 0.031 0.234 0 0.391-0.125 0.828-0.266 1.188-0.359 0.875-1.813 1.437-2.703 1.437-0.75 0-2.297-0.656-2.969-0.969-2.234-1.016-3.625-2.75-4.969-4.734-0.594-0.875-1.125-1.953-1.109-3.031v-0.125c0.031-1.031 0.406-1.766 1.156-2.469 0.234-0.219 0.484-0.344 0.812-0.344 0.187 0 0.375 0.047 0.578 0.047 0.422 0 0.5 0.125 0.656 0.531 0.109 0.266 0.906 2.391 0.906 2.547 0 0.594-1.078 1.266-1.078 1.625 0 0.078 0.031 0.156 0.078 0.234 0.344 0.734 1 1.578 1.594 2.141 0.719 0.688 1.484 1.141 2.359 1.578 0.109 0.063 0.219 0.109 0.344 0.109 0.469 0 1.25-1.516 1.656-1.516zM12.219 23.5c5.406 0 9.812-4.406 9.812-9.812s-4.406-9.812-9.812-9.812-9.812 4.406-9.812 9.812c0 2.063 0.656 4.078 1.875 5.75l-1.234 3.641 3.781-1.203c1.594 1.047 3.484 1.625 5.391 1.625zM12.219 1.906c6.5 0 11.781 5.281 11.781 11.781s-5.281 11.781-11.781 11.781c-1.984 0-3.953-0.5-5.703-1.469l-6.516 2.094 2.125-6.328c-1.109-1.828-1.687-3.938-1.687-6.078 0-6.5 5.281-11.781 11.781-11.781z"></path>
-                  </svg>
-                  <span className="text-sm font-medium">WhatsApp</span>
-                </a>
-
-                {/* Instagram */}
-                <button
-                  className="flex items-center gap-2 text-white hover:text-gold transition-colors duration-300 cursor-not-allowed"
-                  disabled
                   aria-label="Instagram"
                 >
                   <Instagram className="w-5 h-5" />
                   <span className="text-sm font-medium">Instagram</span>
-                </button>
+                </a>
 
-                {/* Phone */}
+                {/* Facebook */}
                 <a
-                  href="tel:+918123091644"
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-2 text-white hover:text-gold transition-colors duration-300"
-                  aria-label="Phone"
+                  aria-label="Facebook"
                 >
-                  <Phone className="w-5 h-5" />
-                  <span className="text-sm font-medium">Call</span>
+                  <Facebook className="w-5 h-5" />
+                  <span className="text-sm font-medium">Facebook</span>
+                </a>
+
+                {/* TikTok */}
+                <a
+                  href="https://tiktok.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-white hover:text-gold transition-colors duration-300"
+                  aria-label="TikTok"
+                >
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                  </svg>
+                  <span className="text-sm font-medium">TikTok</span>
                 </a>
               </motion.div>
             </div>

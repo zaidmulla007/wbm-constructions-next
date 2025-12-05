@@ -11,6 +11,7 @@ import FloatingActions from '../components/FloatingActions';
 const ServicesPage = () => {
   const services = [
     {
+      id: 1,
       icon: <Building2 className="w-12 h-12" />,
       title: 'Design & Build',
       description: 'Our Design & Build service combines creativity and construction expertise into a single streamlined process',
@@ -26,6 +27,7 @@ const ServicesPage = () => {
       ]
     },
     {
+      id: 2,
       icon: <Building2 className="w-12 h-12" />,
       title: 'Office Fit out',
       description: 'We create functional, modern, and inspiring workspaces that enhance productivity and employee well-being',
@@ -41,6 +43,7 @@ const ServicesPage = () => {
       ]
     },
     {
+      id: 3,
       icon: <Home className="w-12 h-12" />,
       title: 'Retail Fit out',
       description: 'We design and build retail environments that attract customers and elevate the shopping experience',
@@ -56,6 +59,7 @@ const ServicesPage = () => {
       ]
     },
     {
+      id: 4,
       icon: <Hammer className="w-12 h-12" />,
       title: 'Refurbishment',
       description: 'Our refurbishment services upgrade and refresh existing spaces without disrupting daily operations',
@@ -71,6 +75,7 @@ const ServicesPage = () => {
       ]
     },
     {
+      id: 5,
       icon: <Factory className="w-12 h-12" />,
       title: 'Furniture Solutions',
       description: 'We supply and install high-quality office and retail furniture that blends comfort, style, and durability',
@@ -86,6 +91,7 @@ const ServicesPage = () => {
       ]
     },
     {
+      id: 6,
       icon: <Wrench className="w-12 h-12" />,
       title: 'Joinery Works',
       description: 'Our in-house joinery team creates custom woodwork, cabinetry, counters, wall claddings, doors, and bespoke furniture',
@@ -101,6 +107,7 @@ const ServicesPage = () => {
       ]
     },
     {
+      id: 7,
       icon: <PaintBucket className="w-12 h-12" />,
       title: 'Interior Design',
       description: 'Our interior design service transforms ideas into visually appealing, functional environments',
@@ -116,6 +123,7 @@ const ServicesPage = () => {
       ]
     },
     {
+      id: 8,
       icon: <Hammer className="w-12 h-12" />,
       title: 'Renovation',
       description: 'Whether it\'s restructuring a layout or updating finishes, our renovation services revitalize spaces with minimal downtime',
@@ -157,8 +165,8 @@ const ServicesPage = () => {
             </p>
           </motion.div>
 
-          {/* Services Grid - Detailed View */}
-          <div className="space-y-20">
+          {/* Services Grid - Matches Homepage UI */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-14">
             {services.map((service, index) => (
               <motion.div
                 key={index}
@@ -166,59 +174,53 @@ const ServicesPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="bg-white rounded-2xl overflow-hidden shadow-2xl"
+                whileHover={{ y: -10 }}
+                className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-gold/20 transition-all duration-300"
               >
-                <div className={`grid lg:grid-cols-2 gap-0 ${index % 2 === 1 ? 'lg:grid-flow-dense' : ''}`}>
+                <Link href={`/services/${service.id}`} className="block h-full">
                   {/* Image */}
-                  <div className={`relative h-96 lg:h-auto ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
+                  <div className="relative h-48 overflow-hidden">
                     <Image
                       src={service.image}
                       alt={service.title}
                       fill
-                      className="object-cover"
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent" />
-                    <div className="absolute bottom-6 left-6 w-20 h-20 bg-gold rounded-full flex items-center justify-center text-dark shadow-lg">
+
+                    {/* Icon */}
+                    <div className="absolute bottom-4 left-4 w-16 h-16 bg-gold rounded-full flex items-center justify-center text-dark shadow-lg group-hover:scale-110 transition-transform duration-300">
                       {service.icon}
                     </div>
                   </div>
 
                   {/* Content */}
-                  <div className="p-8 lg:p-12">
-                    <h2 className="text-3xl lg:text-4xl font-bold text-dark mb-4">
+                  <div className="p-6">
+                    <h3 className="text-2xl font-bold text-dark mb-3 group-hover:text-gold transition-colors duration-300">
                       {service.title}
-                    </h2>
-                    <p className="text-black text-lg mb-6 leading-relaxed">
-                      {service.detailedDescription}
+                    </h3>
+                    <p className="text-black mb-4 leading-relaxed line-clamp-3">
+                      {service.description}
                     </p>
 
-                    {/* Key Features */}
-                    <div className="mb-6">
-                      <h3 className="text-xl font-bold text-dark mb-4">Key Features</h3>
-                      <div className="grid grid-cols-2 gap-3">
-                        {service.features.map((feature, idx) => (
-                          <div key={idx} className="flex items-center text-black">
-                            <span className="w-2 h-2 bg-gold rounded-full mr-3"></span>
-                            {feature}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                    {/* Key Features (Limited to first 4 for card view if needed, or all) */}
+                    <ul className="space-y-2 mb-6">
+                      {service.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-center text-black">
+                          <span className="w-2 h-2 bg-gold rounded-full mr-3"></span>
+                          <span className="text-sm">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
 
-                    {/* Benefits */}
-                    <div>
-                      <h3 className="text-xl font-bold text-dark mb-4">Benefits</h3>
-                      <ul className="space-y-2">
-                        {service.benefits.map((benefit, idx) => (
-                          <li key={idx} className="flex items-start text-black">
-                            <CheckCircle className="w-5 h-5 text-gold mr-3 mt-0.5 flex-shrink-0" />
-                            {benefit}
-                          </li>
-                        ))}
-                      </ul>
+                    {/* Button */}
+                    <div className="block mt-auto">
+                      <span className="inline-block w-full text-center py-3 bg-dark text-white font-semibold rounded-lg group-hover:bg-gold group-hover:text-dark transition-all duration-300 transform group-hover:scale-105">
+                        Explore More
+                      </span>
                     </div>
                   </div>
-                </div>
+                </Link>
               </motion.div>
             ))}
           </div>

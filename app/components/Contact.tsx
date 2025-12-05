@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Clock, Facebook, Instagram, Linkedin, X } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Clock, Facebook, Instagram, X } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -56,9 +56,22 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    { icon: <Facebook className="w-5 h-5" />, link: '#', name: 'Facebook' },
-    { icon: <Instagram className="w-5 h-5" />, link: '#', name: 'Instagram' },
-    { icon: <Linkedin className="w-5 h-5" />, link: '#', name: 'LinkedIn' },
+    { icon: <Instagram className="w-5 h-5" />, link: 'https://instagram.com', name: 'Instagram' },
+    { icon: <Facebook className="w-5 h-5" />, link: 'https://facebook.com', name: 'Facebook' },
+    {
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+        </svg>
+      ),
+      link: 'https://tiktok.com',
+      name: 'TikTok'
+    },
   ];
 
   // Function to expose modal control globally
@@ -208,219 +221,221 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16 md:mb-20 lg:mb-24"
-        >
-          <span className="inline-block px-4 py-2 bg-gold/10 border border-gold rounded-full text-gold font-semibold text-sm tracking-wider mb-4">
-            GET IN TOUCH
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-dark mb-4">
-            Let's Start Your Project
-          </h2>
-          <p className="text-xl text-black max-w-3xl mx-auto">
-            Ready to bring your vision to life? Contact us today for a consultation
-          </p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-12 md:gap-16 lg:gap-20">
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white p-8 md:p-10 lg:p-12 rounded-2xl shadow-xl"
+            className="text-center mb-16 md:mb-20 lg:mb-24"
           >
-            <h3 className="text-2xl font-bold text-dark mb-6">Send us a Message</h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-black mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-gold focus:outline-none transition-colors duration-300"
-                    placeholder="John Doe"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-black mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-gold focus:outline-none transition-colors duration-300"
-                    placeholder="john@example.com"
-                  />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-semibold text-black mb-2">
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-gold focus:outline-none transition-colors duration-300"
-                    placeholder="+971 XX XXX XXXX"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-semibold text-black mb-2">
-                    Subject *
-                  </label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-gold focus:outline-none transition-colors duration-300"
-                  >
-                    <option value="">Select a subject</option>
-                    <option value="general">General Inquiry</option>
-                    <option value="quote">Request a Quote</option>
-                    <option value="project">New Project</option>
-                    <option value="support">Support</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-semibold text-black mb-2">
-                  Your Message *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={16}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-gold focus:outline-none transition-colors duration-300 resize-none"
-                  placeholder="Tell us about your project..."
-                ></textarea>
-              </div>
-
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full py-4 bg-gold hover:bg-gold-dark text-dark font-bold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-gold/30"
-              >
-                <Send className="w-5 h-5" />
-                Send Message
-              </motion.button>
-            </form>
+            <span className="inline-block px-4 py-2 bg-gold/10 border border-gold rounded-full text-gold font-semibold text-sm tracking-wider mb-4">
+              GET IN TOUCH
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-dark mb-4">
+              Let's Start Your Project
+            </h2>
+            <p className="text-xl text-black max-w-3xl mx-auto">
+              Ready to bring your vision to life? Contact us today for a consultation
+            </p>
           </motion.div>
 
-          {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-8"
-          >
-            {/* Info Cards */}
-            <div className="grid sm:grid-cols-2 gap-6 md:gap-8 lg:gap-10">
-              {contactInfo.map((info, index) => (
-                <motion.a
-                  key={index}
-                  href={info.link}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  whileHover={{ y: -5 }}
-                  className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl hover:shadow-gold/20 transition-all duration-300 border-l-4 border-gold"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center text-gold flex-shrink-0">
-                      {info.icon}
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-dark mb-1">{info.title}</h4>
-                      <p className="text-black text-sm">{info.content}</p>
-                    </div>
-                  </div>
-                </motion.a>
-              ))}
-            </div>
-
-            {/* Map */}
+          <div className="grid lg:grid-cols-2 gap-12 md:gap-16 lg:gap-20">
+            {/* Contact Form */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              className="bg-white p-6 rounded-xl shadow-lg"
+              transition={{ duration: 0.6 }}
+              className="bg-white p-8 md:p-10 lg:p-12 rounded-2xl shadow-xl"
             >
-              <h4 className="text-xl font-bold text-dark mb-4">Visit Our Office</h4>
-              <div className="aspect-video bg-gray-200 rounded-lg overflow-hidden">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462560.6828584221!2d54.89782!3d25.0760095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai!5e0!3m2!1sen!2sae!4v1234567890"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
-              </div>
+              <h3 className="text-2xl font-bold text-dark mb-6">Send us a Message</h3>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-semibold text-black mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-gold focus:outline-none transition-colors duration-300"
+                      placeholder="John Doe"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-semibold text-black mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-gold focus:outline-none transition-colors duration-300"
+                      placeholder="john@example.com"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-semibold text-black mb-2">
+                      Phone Number *
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-gold focus:outline-none transition-colors duration-300"
+                      placeholder="+971 XX XXX XXXX"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="subject" className="block text-sm font-semibold text-black mb-2">
+                      Subject *
+                    </label>
+                    <select
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-gold focus:outline-none transition-colors duration-300"
+                    >
+                      <option value="">Select a subject</option>
+                      <option value="general">General Inquiry</option>
+                      <option value="quote">Request a Quote</option>
+                      <option value="project">New Project</option>
+                      <option value="support">Support</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-semibold text-black mb-2">
+                    Your Message *
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={16}
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-gold focus:outline-none transition-colors duration-300 resize-none"
+                    placeholder="Tell us about your project..."
+                  ></textarea>
+                </div>
+
+                <motion.button
+                  type="submit"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-4 bg-gold hover:bg-gold-dark text-dark font-bold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-gold/30"
+                >
+                  <Send className="w-5 h-5" />
+                  Send Message
+                </motion.button>
+              </form>
             </motion.div>
 
-            {/* Social Links */}
+            {/* Contact Information */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="bg-gradient-to-br from-dark to-dark-light p-6 rounded-xl shadow-lg"
+              transition={{ duration: 0.6 }}
+              className="space-y-8"
             >
-              <h4 className="text-xl font-bold text-white mb-4">Connect With Us</h4>
-              <div className="flex gap-4">
-                {socialLinks.map((social, index) => (
+              {/* Info Cards */}
+              <div className="grid sm:grid-cols-2 gap-6 md:gap-8 lg:gap-10">
+                {contactInfo.map((info, index) => (
                   <motion.a
                     key={index}
-                    href={social.link}
-                    whileHover={{ scale: 1.1, y: -3 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-12 h-12 bg-gold rounded-lg flex items-center justify-center text-dark hover:bg-gold-light transition-all duration-300 shadow-lg"
-                    aria-label={social.name}
+                    href={info.link}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                    whileHover={{ y: -5 }}
+                    className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl hover:shadow-gold/20 transition-all duration-300 border-l-4 border-gold"
                   >
-                    {social.icon}
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center text-gold flex-shrink-0">
+                        {info.icon}
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-dark mb-1">{info.title}</h4>
+                        <p className="text-black text-sm break-all">{info.content}</p>
+                      </div>
+                    </div>
                   </motion.a>
                 ))}
               </div>
-              <p className="text-white mt-4 text-sm">
-                Follow us on social media for updates, projects, and industry insights
-              </p>
+
+              {/* Map */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="bg-white p-6 rounded-xl shadow-lg"
+              >
+                <h4 className="text-xl font-bold text-dark mb-4">Visit Our Office</h4>
+                <div className="aspect-video bg-gray-200 rounded-lg overflow-hidden">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462560.6828584221!2d54.89782!3d25.0760095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai!5e0!3m2!1sen!2sae!4v1234567890"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+              </motion.div>
+
+              {/* Social Links */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+                className="bg-gradient-to-br from-dark to-dark-light p-6 rounded-xl shadow-lg"
+              >
+                <h4 className="text-xl font-bold text-white mb-4">Connect With Us</h4>
+                <div className="flex gap-4">
+                  {socialLinks.map((social, index) => (
+                    <motion.a
+                      key={index}
+                      href={social.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.1, y: -3 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="w-12 h-12 bg-gold rounded-lg flex items-center justify-center text-dark hover:bg-gold-light transition-all duration-300 shadow-lg"
+                      aria-label={social.name}
+                    >
+                      {social.icon}
+                    </motion.a>
+                  ))}
+                </div>
+                <p className="text-white mt-4 text-sm">
+                  Follow us on social media for updates, projects, and industry insights
+                </p>
+              </motion.div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
     </>
   );
 };
