@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
 
 const Projects = () => {
@@ -144,16 +145,16 @@ const Projects = () => {
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-14"
           >
             {filteredProjects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                whileHover={{ y: -10 }}
-                className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-gold/20 transition-all duration-300"
-              >
-                {/* Image */}
-                <div className="relative h-72 overflow-hidden">
+              <Link key={project.id} href={`/projects/${project.id}`}>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  whileHover={{ y: -10 }}
+                  className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-gold/20 transition-all duration-300 cursor-pointer"
+                >
+                  {/* Image */}
+                  <div className="relative h-72 overflow-hidden">
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -178,11 +179,12 @@ const Projects = () => {
                   </div>
 
                   {/* View Button */}
-                  <div className="absolute top-4 right-4 w-12 h-12 bg-gold rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-300 cursor-pointer">
+                  <div className="absolute top-4 right-4 w-12 h-12 bg-gold rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-300">
                     <ExternalLink className="w-6 h-6 text-dark" />
                   </div>
                 </div>
               </motion.div>
+              </Link>
             ))}
           </motion.div>
         </AnimatePresence>
@@ -198,12 +200,12 @@ const Projects = () => {
           <p className="text-lg text-black mb-6">
             Want to see more of our work?
           </p>
-          <a
-            href="#contact"
+          <Link
+            href="/projects"
             className="inline-block px-8 py-4 bg-gold hover:bg-gold-dark text-dark font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg shadow-gold/30"
           >
             View Full Portfolio
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

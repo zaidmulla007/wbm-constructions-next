@@ -2,12 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X, Instagram, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,28 +21,24 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Blog', href: '#blog' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Services', href: '/services' },
+    { name: 'Projects', href: '/projects' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Contact', href: '/contact' },
   ];
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-    }
-  };
+  // Check if we're on home page - only home page should have transparent navbar initially
+  const isHomePage = pathname === '/';
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled || !isHomePage
           ? 'bg-dark/95 backdrop-blur-md shadow-lg shadow-gold/10'
           : 'bg-transparent'
         }`}
@@ -47,38 +46,40 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-22">
           {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex-shrink-0 mt-2"
-          >
-            <Image
-              src="/logo.png"
-              alt="WBM Contracting"
-              width={120}
-              height={60}
-              className="object-contain"
-              priority
-            />
-          </motion.div>
+          <Link href="/">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="flex-shrink-0 mt-2 cursor-pointer"
+            >
+              <Image
+                src="/logo.png"
+                alt="WBM Contracting"
+                width={120}
+                height={60}
+                className="object-contain"
+                priority
+              />
+            </motion.div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link, index) => (
-              <motion.a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(link.href);
-                }}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="text-white hover:text-gold transition-colors duration-300 font-medium text-lg relative group whitespace-nowrap px-2"
-              >
-                {link.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300"></span>
-              </motion.a>
+              <Link key={link.name} href={link.href}>
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className={`text-white hover:text-gold transition-colors duration-300 font-medium text-lg relative group whitespace-nowrap px-2 cursor-pointer ${
+                    pathname === link.href ? 'text-gold' : ''
+                  }`}
+                >
+                  {link.name}
+                  <span className={`absolute bottom-0 left-0 h-0.5 bg-gold transition-all duration-300 ${
+                    pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}></span>
+                </motion.div>
+              </Link>
             ))}
 
             {/* Social Media Icons */}
@@ -148,20 +149,18 @@ const Navbar = () => {
           >
             <div className="px-4 pt-2 pb-6 space-y-3">
               {navLinks.map((link, index) => (
-                <motion.a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(link.href);
-                  }}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="block text-white hover:text-gold hover:bg-gold/10 transition-all duration-300 py-3 px-4 rounded-lg font-medium text-lg"
-                >
-                  {link.name}
-                </motion.a>
+                <Link key={link.name} href={link.href} onClick={() => setIsMobileMenuOpen(false)}>
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className={`block text-white hover:text-gold hover:bg-gold/10 transition-all duration-300 py-3 px-4 rounded-lg font-medium text-lg ${
+                      pathname === link.href ? 'text-gold bg-gold/10' : ''
+                    }`}
+                  >
+                    {link.name}
+                  </motion.div>
+                </Link>
               ))}
 
               {/* Social Media Icons - Mobile */}

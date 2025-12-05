@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Building2, Home, Factory, Hammer, PaintBucket, Wrench } from 'lucide-react';
 
 const Services = () => {
@@ -134,9 +135,11 @@ const Services = () => {
                 </ul>
 
                 {/* Button */}
-                <button className="w-full py-3 bg-dark text-white font-semibold rounded-lg group-hover:bg-gold group-hover:text-dark transition-all duration-300 transform group-hover:scale-105">
-                  Explore More
-                </button>
+                <Link href="/services" className="block">
+                  <button className="w-full py-3 bg-dark text-white font-semibold rounded-lg group-hover:bg-gold group-hover:text-dark transition-all duration-300 transform group-hover:scale-105">
+                    Explore More
+                  </button>
+                </Link>
               </div>
 
               {/* Decorative Element */}
@@ -160,12 +163,12 @@ const Services = () => {
             <p className="text-xl text-dark/80 mb-8 max-w-2xl mx-auto text-center">
               Let's discuss how we can bring your vision to life with our expert construction services
             </p>
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               className="inline-block px-10 py-4 bg-dark hover:bg-dark-light text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
               Request a Quote
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>

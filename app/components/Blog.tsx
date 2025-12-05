@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 
 const Blog = () => {
@@ -210,12 +211,12 @@ const Blog = () => {
           transition={{ delay: 0.3, duration: 0.6 }}
           className="mt-20 md:mt-28 lg:mt-32 text-center"
         >
-          <a
-            href="#"
+          <Link
+            href="/blog"
             className="inline-block px-8 py-4 bg-gold hover:bg-gold-dark text-dark font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg shadow-gold/30"
           >
             View All Articles
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>
