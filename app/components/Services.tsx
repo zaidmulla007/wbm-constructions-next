@@ -135,7 +135,7 @@ const Services = () => {
 
                 {/* Button */}
                 <button className="w-full py-3 bg-dark text-white font-semibold rounded-lg group-hover:bg-gold group-hover:text-dark transition-all duration-300 transform group-hover:scale-105">
-                  Learn More
+                  Explore More
                 </button>
               </div>
 
